@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Консоль технической поддержки. Версия 2.0.7.35-rc(s)</title>
+
+<HTA:APPLICATION 
+     ID="objSupportConsole" 
+     APPLICATIONNAME="SupportConsole"
+	 ICON="bin/img/support.ico"
+     SCROLL="no"
+     SINGLEINSTANCE="no"
+	 SHOWINTASKBAR="yes"
+	 SYSMENU="no"
+	 WINDOWSTATE="normal"
+	 MAXIMIZEBUTTON="yes"
+	 MINIMIZEBUTTON="yes"
+	 VERSION="2.0.7.35-rc(s)"
+>
+
+<style>
+BODY { background-color: buttonface; font-family: Helvetica; font-size: 10pt; margin-top: 10px; margin-left: 20px; margin-right: 20px; margin-bottom: 10px;}
+.button { font-family: Helvetica; font-size: 8pt; width: 92px;}
+textarea { font-family: arial; font-size: 8pt;}
+select { font-family: arial; font-size: 8pt; width: 350px; margin-left: 0px;}
+td { font-family: arial; font-size: 8pt; }
+</style>
+<SCRIPT LANGUAGE="VBScript">
+Sub GenerateCode
+
+
+    If D1.Value = "Listbox" Then
+	    strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "1" & chr(34) & ">Установка | Удаление программ</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "2" & chr(34) & ">Управление компьютером</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "3" & chr(34) & ">Реестр</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "4" & chr(34) & ">Выдача прав на автозагрузку</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "35" & chr(34) & ">Свойства компьютера</option>" & vbCrLf
+        strScript = strScript & "</select>"
+        strExample = strScript
+        strDescription = ""
+    End If
+
+	If D1.Value = "Install" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "25" & chr(34) & ">Стандартный софт</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "27" & chr(34) & ">Офис 2003 + конвертор </option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "28" & chr(34) & ">Офис 2010</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "32" & chr(34) & ">Удаление Java</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "34" & chr(34) & ">Установка ClearCanvas</option>" & vbCrLf
+		strExample = strScript
+		strDescription = "Установка программ"
+    End If
+	
+	If D1.Value = "Prophylaxis" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "6" & chr(34) & ">Очистка темпов</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "7" & chr(34) & ">Fix svchost</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "8" & chr(34) & ">Обновление груповых политик</option>" & vbCrLf
+        strScript = strScript & "<option value=" & chr(34) & "9" & chr(34) & ">Обновление ОС</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "20" & chr(34) & ">AIDA64</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "21" & chr(34) & ">HDD Scan</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "29" & chr(34) & ">Defraggler</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "33" & chr(34) & ">SpaceSniffer</option>" & vbCrLf
+        strScript = strScript & "</select>"
+		strExample = strScript
+        strDescription = ""
+	End If
+
+	If D1.Value = "Printers" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "10" & chr(34) & ">Добавление принтера</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "11" & chr(34) & ">Очистка очереди печати</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "26" & chr(34) & ">HP Universal Drivers PCL5</option>" & vbCrLf
+
+		strExample = strScript
+		strDescription = "Управление принтерами"	
+	End If
+
+	If D1.Value = "Antivir" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "12" & chr(34) & ">Forefront: Быстрое сканирование</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "13" & chr(34) & ">Forefront: Полное сканирование</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "18" & chr(34) & ">Установка Microsoft Security Essentials</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "19" & chr(34) & ">Установка AVG</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "22" & chr(34) & ">ComboFix</option>" & vbCrLf
+		strExample = strScript
+		strDescription = "Антивирусы"	
+	End If
+	
+	If D1.Value = "Sysinternals" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "14" & chr(34) & ">Autoruns</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "15" & chr(34) & ">ProcessExplorer</option>" & vbCrLf
+		strExample = strScript
+		strDescription = "Утилиты Sysinternals"	
+	End If	
+	
+	If D1.Value = "Remote" Then
+		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "16" & chr(34) & ">Установка Teamviwer</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "17" & chr(34) & ">Установка Logmein (под контролем support@nsi)</option>" & vbCrLf
+		strExample = strScript
+		strDescription = "Средства удаленного доступа"	
+	End If	
+	
+	
+	If D1.Value = "Restore" Then
+   		strScript = "<select size=" & chr(34) & "10" & chr(34) &  " name=" & chr(34) & "Listbox1" & chr(34) & ">" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "23" & chr(34) & ">Recuva</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "24" & chr(34) & ">R-Studio</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "30" & chr(34) & ">GetDataBack for FAT</option>" & vbCrLf
+		strScript = strScript & "<option value=" & chr(34) & "31" & chr(34) & ">GetDataBack for NTFS</option>" & vbCrLf		
+		strExample = strScript
+		strDescription = "Средства восстановления данных"
+    End If
+	
+	
+    SampleArea.InnerHTML = strExample
+	Description.InnerHTML = strDescription
+    
+End Sub
+
+Sub ResetCode
+    On Error Resume Next
+End Sub
+
+
+</SCRIPT>
+<SCRIPT LANGUAGE="VBScript">
+Sub RunScript
+	On Error Resume Next
+	Set objShell = CreateObject("WScript.Shell")
+	
+    If Listbox1.Value = 0 Then
+	MsgBox("Вы не выбрали задачу"),vbCritical, ("Ошибка")
+	
+    ElseIf Listbox1.Value = 1 Then
+	objShell.Run "control.exe appwiz.cpl", 1
+	strDescription = "Функция запущена"
+	
+    ElseIf Listbox1.Value = 2 Then
+	objShell.Run "compmgmt.msc"
+	
+	ElseIf Listbox1.Value = 3 Then
+	objShell.Run "regedit"
+	
+	ElseIf Listbox1.Value = 4 Then
+    objShell.Run "\\nsi.ru\dfs\Software\support\bat\grantaccess.bat"
+		
+	ElseIf Listbox1.Value = 6 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\del.cmd"
+	
+	ElseIf Listbox1.Value = 7 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\fixsvchost.cmd"
+	
+	ElseIf Listbox1.Value = 8 Then
+	objShell.Run("%SystemRoot%\system32\gpupdate /force")
+
+	ElseIf Listbox1.Value = 9 Then
+	Set oShell = CreateObject("WScript.Shell")
+	' Stop and start the Automatic updates service
+	oShell.Run "%SystemRoot%\system32\net.exe stop wuauserv", 0, True
+	oShell.Run "%SystemRoot%\system32\net.exe start wuauserv", 0, True
+
+	' Run wuauclt.exe with resetauthorization
+	sCmd = "%SystemRoot%\system32\wuauclt.exe /resetauthorization /detectnow"
+	sCmd = "%SystemRoot%\system32\wuauclt.exe /updatenow"
+	MsgBox("Проверка и установка обновлений ОС успешно запущены")
+
+	ElseIf Listbox1.Value = 10 Then
+	objShell.Run "rundll32.exe printui.dll,PrintUIEntry /il"
+	
+	ElseIf Listbox1.Value = 11 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\spooler.bat"
+	
+	ElseIf Listbox1.Value = 12 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\qscan.cmd"
+
+	ElseIf Listbox1.Value = 13 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\fscan.cmd"
+	
+	ElseIf Listbox1.Value = 14 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Sysinternals\Autoruns\autoruns.exe -accepteula"
+	
+	ElseIf Listbox1.Value = 15 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Sysinternals\ProcessExplorer\procexp.exe -accepteula"
+	
+	ElseIf Listbox1.Value = 16 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Remote\TeamViewer_Setup_ru.exe"
+	
+	ElseIf Listbox1.Value = 17 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Remote\LogMeIn.msi"
+	
+	ElseIf Listbox1.Value = 18 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\mse.bat", 0, false 
+	
+	ElseIf Listbox1.Value = 19 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\avg.bat", 0, false 
+	
+	ElseIf Listbox1.Value = 20 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\AIDA64\AIDA64BusinessPortable.exe"
+	
+	ElseIf Listbox1.Value = 21 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\hddscan.bat", 0, false
+	
+	ElseIf Listbox1.Value = 22 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\AntiVir\ComboFix.exe"
+	
+	ElseIf Listbox1.Value = 23 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\recuva.bat", 0, false 
+		
+	ElseIf Listbox1.Value = 24 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Restore\R-Studio\R-Studio.exe"
+	
+	ElseIf Listbox1.Value = 25 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\soft.vbs"
+	
+	ElseIf Listbox1.Value = 26 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\hp_drivers.bat", 0, false
+	
+	ElseIf Listbox1.Value = 27 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\2003.bat"
+	
+	ElseIf Listbox1.Value = 28 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\2010.bat"
+	
+	ElseIf Listbox1.Value = 29 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\defraggler.bat", 0, false
+
+	ElseIf Listbox1.Value = 30 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Restore\GDB\GetDataBackFAT.exe"
+	
+	ElseIf Listbox1.Value = 31 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\Restore\GDB\GetDataBackNTFS.exe"
+	
+	ElseIf Listbox1.Value = 32 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\java-uninstall.bat"
+	
+	ElseIf Listbox1.Value = 33 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bin\spacesniffer\SpaceSniffer.exe"	
+	
+	ElseIf Listbox1.Value = 34 Then
+	objShell.Run "\\nsi.ru\dfs\Software\support\bat\canvas-inst.bat"
+	
+	ElseIf Listbox1.Value = 35 Then
+	objShell.Run "control.exe sysdm.cpl"
+	
+End If
+
+
+End Sub
+' #1 Запуск сетевого хранилища НИИНХ
+	Sub RunDFS
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run "explorer.exe \\nsi.ru\dfs\Software"
+	End Sub
+' #2 Просто командная строка	
+	Sub RunCMD
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run "cmd"
+	End Sub
+' #3 Командная строка от администратора
+	Sub RunCMDSys
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run "\\nsi.ru\dfs\Software\support\bin\Sysinternals\psexec -s cmd"
+	End Sub	
+' #4 Запуск CCleaner, батник в скрытом режиме	
+	Sub runClear
+		Set objShell = CreateObject("WScript.Shell")
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run "\\nsi.ru\dfs\Software\support\bat\ccleaner.bat", 0, false 
+    End Sub
+' #5 Запуск файлового менеджера Far Manager		
+	Sub runFar
+		Set objShell = CreateObject("WScript.Shell")
+    	objShell.Run "\\nsi.ru\dfs\Software\support\bin\far\far.exe"
+    End Sub
+' #6 Генерация стандартных отчетов о системе. Запрашивается номер обращения, далее пара ошибок - нажимать ОК. Открывается папка с отчетами и создается отчет		
+	Sub runReport
+    	Input = InputBox("Введите номер обращения: ")
+		report = "\\nsi.ru\dfs\Software$\support\bin\AIDA64\AIDA64BusinessPortable.exe /R " & Input & "_%computername% /HTML /CUSTOM Goo3.rpf"
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run report
+		objShell.Run "explorer.exe bin\AIDA64\Reports"
+    End Sub
+' #7 Сообщение копирайта, но я его решил скрыть. Нафиг надо		
+	Sub Terms
+		msgbox("Данное программное обеспечение распространяется по лицензии Creative Commons «Attribution-ShareAlike» 4.0 Всемирная." & Chr(10) & Chr(10) & "Разработка: Александр Демидов" & Chr(10) & Chr(10) & "Благодарности: Дмитрию Курылеву, Дмитрию Хохлову и Microsoft Scripting Guys"),vbInformation, ("Лицензия")
+	End Sub		
+</SCRIPT>
+<script language="VBScript">
+    On Error Resume Next
+    window.resizeTo 800, 550
+    window.moveTo ((screen.availWidth / 2) - 350), ((screen.availHeight / 2) - 275)
+</script>
+  
+</head>
+<body>
+<table width="100%">
+    <tr>
+        <td width = "23%" valign="top"><b>Опции</b><BR><span id="PartsList">
+        <select size="12" name="D1" onChange="GenerateCode">
+        <option value="Listbox">Системные функции</option>
+		<option value="Install">Установка и удаление программ</option>
+		<option value="Prophylaxis">Профилактика и диагностика</option>
+		<option value="Printers">Принтеры</option>
+		<option value="Antivir">Антивирусы</option>
+		<option value="Sysinternals">Sysinternals</option>
+		<option value="Remote">Удаленное управление</option>
+		<option value="Restore">Восстановление данных</option>
+        </select></span>
+        </td>
+        <td width = "10%" valign="top">&nbsp;</td>
+        <td width = "67%" valign="top">
+		<b>Функции</b><br>
+<span id="SampleArea"></span><br>
+<input id=runbutton  class="button" type="button" value="Пуск" name="run_button"  onClick="RunScript">
+	</td></tr>	
+	<tr>
+	<td>
+	<span id="Description"><BR><BR></span>
+    	</td> 
+    </tr>
+</table><br>&nbsp;<br>
+<hr>
+<input id=runbutton  class="button" type="button" value="\\software" name="run_button"  onClick="RunDFS">
+<input id=runbutton  class="button" type="button" value="CMD" name="run_button"  onClick="RunCMD">
+<input id=runbutton  class="button" type="button" value="SYSTEM\CMD" name="run_button"  onClick="RunCMDSys">
+<input id=runbutton  class="button" type="button" value="CCleaner" name="run_button"  onClick="runClear">
+<input id=runbutton  class="button" type="button" value="Far Manager" name="run_button"  onClick="runFar">
+<input id=runbutton  class="button" type="button" value="Отчет" name="run_button"  onClick="runReport">
+<input id=runbutton  class="button" type="button" value="Выход" name="run_button"  onClick="self.close">
+
+
+
+<hr>
+</body>
